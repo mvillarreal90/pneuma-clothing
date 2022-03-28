@@ -10,6 +10,12 @@ const Navigation = () => {
         <Link className='logo-container' to='/'>
           <PneumaLogo className='logo' />
         </Link>
+        <Link className='nav-link' to='/shop'>
+          SHOP
+        </Link>
+        <Link className='nav-link' to='/sign-in'>
+          SIGN IN
+        </Link>
       </div>
       <Outlet />
     </Fragment>
