@@ -2,6 +2,7 @@ import { compose, createStore, applyMiddleware } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import logger from "redux-logger";
+import thunk from "redux-thunk";
 
 import { rootReducer } from "./root-reducer";
 
@@ -15,9 +16,10 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 //Only run logger middleware when not in production
 // middleWares can't be null: filer(Boolean) will remove anything that is false and return an empty object
-const middleWares = [process.env.NODE_ENV !== "production" && logger].filter(
-  Boolean
-);
+const middleWares = [
+  process.env.NODE_ENV !== "production" && logger,
+  thunk,
+].filter(Boolean);
 
 //using google chrome extension: Redux-DevTools
 const composeEnhancer =
